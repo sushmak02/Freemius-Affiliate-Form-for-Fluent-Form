@@ -1,0 +1,12 @@
+{
+  "name": "freemius-affiliate-fluent-form",
+  "version": "1.0.0",
+  "description": "Integrate Freemius Affiliate Form API with Fluent form submission. This offers creating an affiliate entry in the Freemius Affiliate account when the form is submiiited from our website.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.brainstormforce.com:bsf-store-products//wp-schema-pro.git"
+  },
+  "author": "brainstormforce",
+  "license": "ISC"
+}
