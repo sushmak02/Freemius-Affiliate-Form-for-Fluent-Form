@@ -82,7 +82,7 @@ if ( ! class_exists( 'FAFF_Loader' ) ) :
 			
 			$this->include_files();
 
-			add_action( 'fluentform_submission_inserted', array( $this, 'your_custom_after_submission_function' ), 20, 3 );
+			add_action( 'fluentform_submission_inserted', array( $this, 'call_custom_after_submission_function' ), 20, 3 );
 			
 		}
 
@@ -140,7 +140,7 @@ if ( ! class_exists( 'FAFF_Loader' ) ) :
 
 		}
 
-		public function your_custom_after_submission_function( $entryId, $formData, $form ) {
+		public function call_custom_after_submission_function( $entryId, $formData, $form ) {
 			// DO your stuffs here.
 			if( "3" !== $form->id ) {
 				return;
@@ -156,10 +156,10 @@ if ( ! class_exists( 'FAFF_Loader' ) ) :
 			// You can get the product's affiliate program terms ID from the AFFILIATION section, it's stated right in the 1st tab.
 			$api->Api("/plugins/5371/aff/608/affiliates.json", 'POST', array(
 				'name'                         => $formData['name_field'],
-				'email'                        => $formData['email'],
-				'paypal_email'                 => $formData['email_1'],
+				'email'                        => $formData['email_field'],
+				'paypal_email'                 => $formData['paypal_email_field'],
 				// Should not include an HTTP/S protocol.
-				'domain'                       => $formData['url'],
+				'domain'                       => $formData['domain_field'],
 				// An optional param to include additional domains/sub-domains where the applicant will promote your product.
 				// 'additional_domains'           => array('affiliate-2nd-site.com', 'affiliate-3rd-site.com'),
 				// Optional comma-separated combination of the following: 'social_media' and 'mobile_apps'.
@@ -168,7 +168,7 @@ if ( ! class_exists( 'FAFF_Loader' ) ) :
 				// An optional free text where an applicant can provide some stats data about their reach.
 				// 'stats_description'            => '100k monthly PVs. 1,000 Instagram followers. I manage a FB group of 20,000 members.',
 				// An optional free text when an applicant can explain how they are planning to promote your product.
-				'promotion_method_description' => $formData['description'],
+				'promotion_method_description' => $formData['promotion_method_description_field'],
 				// An option applicant state. Defaults to 'active'. One of the following states: 'active', 'pending', 'rejected', 'suspended', 'blocked'.
 				'state'                        => 'pending',
 			));
